@@ -52,6 +52,9 @@ claude plugin install context-check-hook@context-check-marketplace
 ### claude.ai에서
 스킬은 claude.ai 채팅에서도 동작합니다. 훅은 Claude Code에서만 동작합니다. 채팅에서는 파일을 쓸 수 없어서, 바로잡은 해석을 메모리에 저장하거나 "📌 용어집에 추가할 줄" 표로 보여 줍니다.
 
+### 개인정보
+플러그인은 어디에도 데이터를 보내지 않습니다. 자세한 내용은 [PRIVACY.md](PRIVACY.md)에 있습니다.
+
 ---
 
 ## English
@@ -93,6 +96,9 @@ Start a new session afterwards. You can also install from the `/plugin` menu ins
 - **Hook requirement** (`context-check-hook`): the shell needs `cat`. On Windows, install Git Bash. The skill works without the hook.
 
 The skill instructions are written in Korean. Claude reads them fine and applies them to English requests too.
+
+### Privacy
+The plugin sends no data anywhere. See [PRIVACY.md](PRIVACY.md).
 
 ## License
 MIT
