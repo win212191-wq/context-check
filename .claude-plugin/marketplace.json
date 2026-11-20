@@ -1,0 +1,14 @@
+{
+  "name": "context-check-marketplace",
+  "description": "context-check: check what a request really means before acting.",
+  "owner": {
+    "name": "win212191-wq"
+  },
+  "plugins": [
+    {
+      "name": "context-check",
+      "source": "./plugins/context-check",
+      "description": "Checks word nuance and sentence structure of a request before acting, in Korean and English."
+    }
+  ]
+}

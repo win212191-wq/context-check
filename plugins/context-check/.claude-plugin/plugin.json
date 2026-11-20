@@ -1,0 +1,14 @@
+{
+  "name": "context-check",
+  "displayName": "Context Check",
+  "version": "1.0.0",
+  "description": "Before acting, checks what a request really means: word nuance and sentence structure (direction, scope, omission, linking, tone) in Korean and English. Shows the chosen reading and what it will NOT do, asks when readings diverge, and learns from corrections.",
+  "author": {
+    "name": "win212191-wq",
+    "url": "https://github.com/win212191-wq"
+  },
+  "homepage": "https://github.com/win212191-wq/context-check",
+  "repository": "https://github.com/win212191-wq/context-check",
+  "license": "MIT",
+  "keywords": ["intent", "clarification", "ambiguity", "korean", "nuance", "glossary"]
+}
