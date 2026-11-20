@@ -8,7 +8,12 @@
     {
       "name": "context-check",
       "source": "./plugins/context-check",
-      "description": "Checks word nuance and sentence structure of a request before acting, in Korean and English."
+      "description": "Skill: checks word nuance and sentence structure of a request before acting, in Korean and English."
+    },
+    {
+      "name": "context-check-hook",
+      "source": "./plugins/context-check-hook",
+      "description": "Optional hook: adds the two-line reading check to every work request. Install together with context-check."
     }
   ]
 }

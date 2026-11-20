@@ -1,0 +1,19 @@
+{
+  "name": "context-check-hook",
+  "displayName": "Context Check Hook (optional)",
+  "version": "1.0.0",
+  "description": "Optional companion to the context-check plugin. A UserPromptSubmit hook adds a short rule to every message so work requests start with two lines: the chosen reading and what will NOT be done. Requires the context-check plugin.",
+  "author": {
+    "name": "win212191-wq",
+    "url": "https://github.com/win212191-wq"
+  },
+  "homepage": "https://github.com/win212191-wq/context-check",
+  "repository": "https://github.com/win212191-wq/context-check",
+  "license": "MIT",
+  "keywords": [
+    "intent",
+    "clarification",
+    "hook",
+    "korean"
+  ]
+}

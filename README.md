@@ -22,7 +22,7 @@ A Claude plugin that checks what a request really means **before** Claude starts
 3. **판단**: 해석이 분명하면 두 줄만 보여 주고 진행합니다. 갈리거나 삭제처럼 되돌리기 어려우면 선택지로 묻습니다.
 4. **기록**: 사용자가 바로잡은 해석을 개인 사전에 쌓아 같은 오해를 반복하지 않습니다.
 
-훅이 메시지마다 짧은 점검 규칙을 붙입니다. 그래서 작업 요청에는 답 첫머리에 아래 두 줄이 나옵니다.
+선택 설치인 **context-check-hook** 플러그인을 함께 깔면 메시지마다 짧은 점검 규칙이 붙습니다. 그러면 작업 요청마다 답 첫머리에 아래 두 줄이 나옵니다.
 ```
 🧭 해석: ...
 🧭 하지 않을 일: ...
@@ -33,12 +33,21 @@ A Claude plugin that checks what a request really means **before** Claude starts
 claude plugin marketplace add win212191-wq/context-check
 claude plugin install context-check@context-check-marketplace
 ```
+매번 자동으로 점검하게 하려면 훅 플러그인도 설치합니다 (선택).
+```
+claude plugin install context-check-hook@context-check-marketplace
+```
 설치한 뒤 새 세션을 엽니다. 세션 안에서는 `/plugin` 메뉴로도 설치할 수 있습니다.
+
+| 플러그인 | 내용 |
+|---|---|
+| `context-check` | 스킬. 요청이 애매할 때 자동으로 불리고, 직접 부를 수도 있습니다. |
+| `context-check-hook` | 선택. 모든 메시지에 점검 규칙을 붙이는 훅입니다. `context-check`와 함께 씁니다. |
 
 - **직접 부르기**: `/context-check:context-check`
 - **개인 사전**: `~/.claude/context-check/nuance-dictionary.md`에 쌓입니다. 플러그인을 업데이트해도 지워지지 않습니다.
 - **프로젝트 용어집**: 각 작업 폴더의 `.claude/glossary.md`에 쌓입니다.
-- **훅이 동작하려면**: 셸에 `cat` 명령이 있어야 합니다. Windows에서는 Git Bash를 설치하면 됩니다. 훅이 없어도 스킬은 동작합니다.
+- **훅이 동작하려면** (`context-check-hook`): 셸에 `cat` 명령이 있어야 합니다. Windows에서는 Git Bash를 설치하면 됩니다. 훅이 없어도 스킬은 동작합니다.
 
 ### claude.ai에서
 스킬은 claude.ai 채팅에서도 동작합니다. 훅은 Claude Code에서만 동작합니다. 채팅에서는 파일을 쓸 수 없어서, 바로잡은 해석을 메모리에 저장하거나 "📌 용어집에 추가할 줄" 표로 보여 줍니다.
@@ -60,19 +69,28 @@ In long or summarized conversations, Claude can misread a request and end up doi
 3. **Decide**: if the reading is clear, it shows two lines and proceeds. If readings diverge, or the action is hard to undo (delete, overwrite, bulk edit, send), it asks with concrete options.
 4. **Learn**: corrections are saved to a personal dictionary so the same misreading does not repeat.
 
-A `UserPromptSubmit` hook adds a short rule to every message, so work requests start with two lines: the reading (`🧭 해석`) and what will not be done (`🧭 하지 않을 일`).
+With the optional **context-check-hook** plugin, a `UserPromptSubmit` hook adds a short rule to every message, so work requests start with two lines: the reading (`🧭 해석`) and what will not be done (`🧭 하지 않을 일`).
 
 ### Install (Claude Code)
 ```
 claude plugin marketplace add win212191-wq/context-check
 claude plugin install context-check@context-check-marketplace
 ```
+To run the check on every message, also install the hook plugin (optional):
+```
+claude plugin install context-check-hook@context-check-marketplace
+```
 Start a new session afterwards. You can also install from the `/plugin` menu inside a session.
+
+| Plugin | What it is |
+|---|---|
+| `context-check` | The skill. Triggers on ambiguous requests, or invoke it directly. |
+| `context-check-hook` | Optional. A hook that adds the check rule to every message. Use with `context-check`. |
 
 - **Invoke directly**: `/context-check:context-check`
 - **Personal dictionary**: `~/.claude/context-check/nuance-dictionary.md` (kept across plugin updates)
 - **Project glossary**: `.claude/glossary.md` in each working folder
-- **Hook requirement**: the shell needs `cat`. On Windows, install Git Bash. The skill works without the hook.
+- **Hook requirement** (`context-check-hook`): the shell needs `cat`. On Windows, install Git Bash. The skill works without the hook.
 
 The skill instructions are written in Korean. Claude reads them fine and applies them to English requests too.
 
